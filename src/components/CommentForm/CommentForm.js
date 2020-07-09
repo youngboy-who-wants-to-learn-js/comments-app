@@ -60,15 +60,16 @@ const CommentForm = ({addComment}) => {
     }
   }
 
-    const handleAdd = async () => {
+    const handleAdd = async (e) => {
+      e.preventDefault();
         try{
             await requestPostComments('POST',{name : nameValue ,email : emailValue,body : bodyValue },console.log);
             addComment({name : nameValue ,email :emailValue ,body : bodyValue });
             setNameValue('');
             setEmailValue('');
             setBodyValue('');
-        } catch(e){
-            console.log(e);
+        } catch(error){
+            console.log(error);
         }
     } 
 
